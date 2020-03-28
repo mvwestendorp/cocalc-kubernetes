@@ -87,6 +87,7 @@ RUN \
        clang-format \
        golang \
        r-cran-formatr \
+       libboost-all-dev \
   && apt-get clean && apt-get -y autoremove
 
 # Install prerequisites ubuntu packages for building the project nodejs server code.
@@ -238,7 +239,7 @@ RUN umask 022 \
   && echo "install.packages('rmarkdown');" | R --no-save
 
 RUN umask 022 \
-  && echo "install.packages('knitr');" | R --no-save
+  && echo "install.packages(c('knitr', 'readr', 'tidyr', 'stringr', 'data.table', 'ggplot2'));" | R --no-save
 
 # Switch to being the non-privileged user.
 USER user

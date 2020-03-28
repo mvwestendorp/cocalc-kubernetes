@@ -2,9 +2,9 @@ FROM sagemathinc/cocalc-kubernetes-project
 
 USER root
 
-RUN apt update && apt install libboost-all-dev -y
+RUN apt update && apt install libboost-all-dev libxml2-dev -y
 RUN umask 022 \
-  && echo "install.packages(c('readr', 'tidyr', 'stringr', 'data.table', 'ggplot2'));" | R --no-save
+  && echo "install.packages(c('readr', 'tidyr', 'stringr', 'data.table', 'ggplot2', 'readxl', 'kableExtra'));" | R --no-save
 
 USER user
 

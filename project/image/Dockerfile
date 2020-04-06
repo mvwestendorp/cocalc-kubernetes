@@ -9,11 +9,11 @@ RUN apt update && \
     add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/'
 
 # Requirement for building some of the packages
-RUN apt update && apt install libboost-all-dev libxml2-dev r-base -y
+RUN apt update && apt install libboost-all-dev libxml2-dev r-base r-base-dev -y
 
 # Reinstall R packages that were installed for older R version
 RUN umask 022 \
-  && echo "update.packages(ask=FALSE);" | R --no-save
+  && echo "update.packages(checkBuilt=TRUE, ask=FALSE);" | R --no-save
   
 # Install required R packages
 RUN umask 022 \

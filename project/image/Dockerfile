@@ -17,7 +17,7 @@ RUN umask 022 \
   
 # Install required R packages
 RUN umask 022 \
-  && echo "install.packages(c('rmarkdown', 'knitr', 'readr', 'tidyr', 'stringr', 'data.table', 'ggplot2', 'readxl', 'kableExtra', 'VGAM', 'OneR', 'multgee', 'gee', 'ordinal', 'effects'));" | R --no-save
+  && echo "install.packages(c('rmarkdown', 'knitr', 'readr', 'tidyr', 'stringr', 'data.table', 'ggplot2', 'readxl', 'kableExtra', 'VGAM', 'OneR', 'multgee', 'gee', 'ordinal', 'effects', 'ggstatsplot', 'paramtest', 'shiny'));" | R --no-save
 
 USER user
 

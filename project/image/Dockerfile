@@ -9,7 +9,7 @@ RUN apt update && \
     add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/'
 
 # Requirement for building some of the packages
-RUN apt update && apt install libboost-all-dev libxml2-dev r-base r-base-dev -y
+RUN apt update && apt install libboost-all-dev libxml2-dev r-base r-base-dev pandoc-citeproc -y
 
 # Reinstall R packages that were installed for older R version
 RUN umask 022 \
@@ -17,8 +17,11 @@ RUN umask 022 \
   
 # Install required R packages
 RUN umask 022 \
-  && echo "install.packages(c('rmarkdown', 'knitr', 'readr', 'tidyr', 'stringr', 'data.table', 'ggplot2', 'readxl', 'kableExtra', 'VGAM', 'OneR', 'multgee', 'gee', 'ordinal', 'effects', 'ggstatsplot', 'paramtest', 'shiny'));" | R --no-save
+  && echo "install.packages(c('rmarkdown', 'knitr', 'readr', 'tidyr', 'stringr', 'data.table', 'ggplot2', 'readxl', 'kableExtra', 'VGAM', 'OneR', 'multgee', 'gee', 'ordinal', 'effects', 'ggstatsplot', 'paramtest', 'shiny', 'plotly', 'bookdown'));" | R --no-save
 
+# Install phantomjs for certain output of plotly 
+RUN umask 022 \
+  && echo "webshot::install_phantomjs()" | R --no-save
 USER user
 
 ENTRYPOINT ["/cocalc/bin/tini", "--"]

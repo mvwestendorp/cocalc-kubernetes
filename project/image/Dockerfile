@@ -17,7 +17,7 @@ RUN umask 022 \
   
 # Install required R packages
 RUN umask 022 \
-  && echo "install.packages(c('rmarkdown', 'knitr', 'readr', 'tidyr', 'stringr', 'data.table', 'ggplot2', 'readxl', 'kableExtra', 'VGAM', 'OneR', 'multgee', 'gee', 'ordinal', 'effects', 'paramtest', 'shiny', 'plotly', 'bookdown'));" | R --no-save
+  && echo "install.packages(c('rmarkdown', 'knitr', 'readr', 'tidyr', 'stringr', 'data.table', 'ggplot2', 'readxl', 'kableExtra', 'VGAM', 'OneR', 'multgee', 'gee', 'ordinal', 'effects', 'paramtest', 'shiny', 'plotly', 'bookdown', 'lmtest', 'emmeans'));" | R --no-save
 
 # Install phantomjs for certain output of plotly 
 RUN umask 022 \
